@@ -1,0 +1,102 @@
+Metadata-Version: 2.4
+Name: datetime-mcp-server
+Version: 0.1.0
+Summary: Add your description here
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+Requires-Dist: mcp[cli]>=1.8.0
+
+# 🕰️ Datetime MCP Server
+
+A simple MCP server that provides the current date and time through a Claude tool.
+
+## 🚀 Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/BfdCampos/datetime-mcp-server.git
+cd datetime-mcp-server
+
+# Install dependencies
+uv install
+```
+
+## 🔧 Setup with Claude Desktop
+
+### Method 1: Automatic Installation
+
+Use the MCP CLI tool to install the server automatically:
+
+```bash
+uv run mcp install main.py
+```
+
+### Method 2: Manual Configuration
+
+Add the server to your Claude Desktop configuration file located at `~/Library/Application Support/Claude/claude_desktop_config.json`:
+
+```json
+{
+  "mcpServers": {
+    "Datetime": {
+      "command": "uv",
+      "args": [
+        "run",
+        "--with",
+        "mcp[cli]",
+        "mcp",
+        "run",
+        "/path/to/your/datetime-mcp-server/main.py"
+      ]
+    }
+  }
+}
+```
+
+> **Note:** Replace `/path/to/your/` with your actual paths.
+
+## 🤖 Using with Claude Desktop
+
+1. Restart Claude Desktop after installation.
+2. Open the app and start a new conversation.
+3. You can now ask for the current date and time to Claude.
+
+/path/to/your/.local/bin/uv
+
+## ❓ FAQ
+
+<details><summary>My Claude Desktop is not detecting the server</summary>
+
+- Ensure you have the latest version of Claude Desktop.
+- Restart Claude Desktop by force quitting the app and reopening it.
+- Make sure your path is correct in the configuration file.
+- Use the absolute path to your `uv` installation, e.g., `/Users/[Your Home Directory]/.local/bin/uv` in the command section of the configuration file. It should look like this:
+
+```json
+{
+  "mcpServers": {
+    "Datetime": {
+      "command": "/Users/[Your Home Directory]/.local/bin/uv",
+      "args": [
+        "run",
+        "--with",
+        "mcp[cli]",
+        "mcp",
+        "run",
+        "/path/to/your/datetime-mcp-server/main.py"
+      ]
+    }
+  }
+}
+```
+
+</details>
+
+<details><summary>I've asked Claude what the time is but it's not using the MCP server</summary>
+
+- LLMs like Claude may not always use the MCP server for every request. If it doesn't use the server, try asking again or rephrasing your question specifically asking it to use the MCP Server.
+
+<img src="claude_not_using_mcp_server_datetime.png" alt="Claude not using MCP server" width="400" />
+
+</details>
+
