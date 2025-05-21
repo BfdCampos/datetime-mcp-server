@@ -5,8 +5,12 @@ import datetime
 mcp = FastMCP("Datetime")
 
 @mcp.tool("now")
-def now() -> str:
+def now() -> dict:
     """
-    Returns the current date and time.
+    Returns the current date and time in local and UTC formats.
     """
-    return datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    return {
+        "local_time": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+        "utc_time": datetime.datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S"),
+    }
+
