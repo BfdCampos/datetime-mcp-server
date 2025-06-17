@@ -1,3 +1,5 @@
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/bfdcampos-datetime-mcp-server-badge.png)](https://mseep.ai/app/bfdcampos-datetime-mcp-server)
+
 # 🕰️ Datetime MCP Server
 
 A simple MCP server that provides the current date and time through a Claude tool.
